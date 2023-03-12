@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import LogoDarkIcon from "../../assets/images/logos/PBOscorecard-dark-logo-icon.svg";
+import LogoDarkIcon from "../../assets/images/logos/Entrepreneurs-dark-logo-icon.svg";
 import LogoDarkText from "../../assets/images/logos/dark-logo-text.svg";
-import LogoWhiteIcon from "../../assets/images/logos/PBOscorecard-white-logo-icon.svg";
+import LogoWhiteIcon from "../../assets/images/logos/Entrepreneurs-white-logo-icon.svg";
 import LogoWhiteText from "../../assets/images/logos/white-logo-text.svg";
 
 const Logo = () => {

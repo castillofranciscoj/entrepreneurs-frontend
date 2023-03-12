@@ -16,16 +16,15 @@ import {
 import { Bell, MessageSquare, Grid } from "react-feather";
 import { useSelector, useDispatch } from "react-redux";
 import SimpleBar from "simplebar-react";
-import MessageDD from "./MessageDD";
 import NotificationDD from "./NotificationDD";
-import MegaDD from "./MegaDD";
-import user1 from "../../assets/images/users/user1.jpg";
 import Image from "next/image";
 import { ToggleMobileSidebar } from "../../store/customizer/CustomizerSlice";
 import ProfileDD from "./ProfileDD";
 import HorizontalLogo from "../logo/HorizontalLogo";
+import { useSession, signOut } from 'next-auth/react';
 
 const HorizontalHeader = () => {
+  const {data: session, status} = useSession()
   const isDarkMode = useSelector((state) => state.customizer.isDark);
   const topbarColor = useSelector((state) => state.customizer.topbarBg);
   const isMobileSidebar = useSelector(
@@ -33,8 +32,9 @@ const HorizontalHeader = () => {
   );
   const dispatch = useDispatch();
 
-  return (
-    <Navbar
+  if (status === 'authenticated'){
+		return(
+      <Navbar
       color={topbarColor}
       dark={!isDarkMode}
       light={isDarkMode}
@@ -94,7 +94,7 @@ const HorizontalHeader = () => {
           <UncontrolledDropdown className=" hov-dd">
             <DropdownToggle color="transparent" style={{ lineHeight: "0px" }}>
               <Image
-                src={user1}
+                src={session.user.image}
                 alt="profile"
                 className="rounded-circle"
                 width="30"
@@ -105,7 +105,7 @@ const HorizontalHeader = () => {
               <ProfileDD />
 
               <div className="p-2 px-3">
-                <Button color="danger" size="sm">
+                <Button onClick={() => signOut()} color="danger" size="sm">
                   Logout
                 </Button>
               </div>
@@ -114,7 +114,8 @@ const HorizontalHeader = () => {
         </Nav>
       </Container>
     </Navbar>
-  );
-};
+		)
+	}
+	}
 
 export default HorizontalHeader;

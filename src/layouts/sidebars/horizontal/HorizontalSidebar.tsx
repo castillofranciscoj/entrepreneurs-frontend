@@ -4,8 +4,10 @@ import { useRouter } from "next/router";
 import SidebarData from "../sidebardata/HorizontalSidebarData";
 import NavSubItem from "./NavSubItem";
 import NavSingleItem from "./NavSingleItem";
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 const HorizontalSidebar = () => {
+  const {data: session, status} = useSession()
   const activeBg = useSelector((state) => state.customizer.sidebarBg);
   const location = useRouter();
   const currentURL = location.pathname.split("/").slice(0, -1).join("/");
@@ -13,6 +15,7 @@ const HorizontalSidebar = () => {
   const isMobileSidebar = useSelector(
     (state) => state.customizer.isMobileSidebar
   );
+  if (status === 'authenticated'){
   return (
     <div
       className={`horizontalNav shadow bg-${activeBg}  ${
@@ -64,6 +67,7 @@ const HorizontalSidebar = () => {
       </Container>
     </div>
   );
+  }
 };
 
 export default HorizontalSidebar;

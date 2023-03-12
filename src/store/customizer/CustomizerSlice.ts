@@ -7,10 +7,10 @@ const initialState = {
   isDark: false,
   isMiniSidebar: false,
   sidebarBg: "white",
-  isTopbarFixed: true,
+  isTopbarFixed: false,
   isMobileSidebar: false,
-  isSidebarFixed: true,
-  isLayoutHorizontal: false,
+  isSidebarFixed: false,
+  isLayoutHorizontal: true,
   isInnerRightPart: false, // this is for the three column layout right part show hide in table & mobile
 };
 

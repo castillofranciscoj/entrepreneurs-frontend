@@ -4,7 +4,7 @@ import OrderStats from "../../components/dashboards/ecommerce/OrderStats";
 import Overview from "../../components/dashboards/ecommerce/Overview";
 import ProductSales from "../../components/dashboards/ecommerce/ProductSales";
 import Reviews from "../../components/dashboards/ecommerce/Reviews";
-import ProductTable from "../products/ProductTable";
+import ProductTable from "../projects/ProjectTable";
 
 const Ecommerce = () => {
   return (

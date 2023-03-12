@@ -14,7 +14,6 @@ import {
 } from "reactstrap";
 import MessageDD from "./MessageDD";
 import NotificationDD from "./NotificationDD";
-import user1 from "../../assets/images/users/user1.jpg";
 import MegaDD from "./MegaDD";
 import {
   ToggleMiniSidebar,
@@ -25,13 +24,17 @@ import LogoWhite from "../../assets/images/logos/white-logo-icon.svg";
 import ProfileDD from "./ProfileDD";
 import { MessageSquare, Bell, Grid, ArrowLeftCircle } from "react-feather";
 import Image from "next/image";
+import { useSession, signOut } from 'next-auth/react'
 
 const Header = () => {
+  const {data: session, status} = useSession()
   const isDarkMode = useSelector((state) => state.customizer.isDark);
   const topbarColor = useSelector((state) => state.customizer.topbarBg);
   const dispatch = useDispatch();
-  return (
-    <Navbar
+
+  if (status === 'authenticated'){
+		return(
+      <Navbar
       color={topbarColor}
       dark={!isDarkMode}
       light={isDarkMode}
@@ -151,7 +154,7 @@ const Header = () => {
         <UncontrolledDropdown className=" hov-dd">
           <DropdownToggle color="transparent" style={{ lineHeight: "0px" }}>
             <Image
-              src={user1}
+              src={session.user.image}
               alt="profile"
               className="rounded-circle"
               width="30"
@@ -161,7 +164,7 @@ const Header = () => {
           <DropdownMenu className="ddWidth">
             <ProfileDD />
             <div className="p-2 px-3">
-              <Button color="danger" size="sm">
+              <Button onClick={() => signOut()} color="danger" size="sm">
                 Logout
               </Button>
             </div>
@@ -172,7 +175,12 @@ const Header = () => {
       {/**********Notification DD**********/}
       {/******************************/}
     </Navbar>
-  );
+		)
+	} else {
+		return(
+			<div><p>You are not signed in.</p></div>
+		)
+	}
 };
 
 export default Header;
