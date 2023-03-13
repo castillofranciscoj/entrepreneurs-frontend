@@ -15,6 +15,15 @@ $dark: #001e3c;
 $light: #f6faff;
 $secondary: #001e3c;
 
+.myDiv {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  background-color: white;
+  height: fit-content;
+  width: fit-content;
+  text-align: center;
+  padding: 100px;
+  }
+
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,

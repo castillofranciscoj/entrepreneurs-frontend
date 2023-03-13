@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  topbarBg: "primary",
+  topbarBg: "white",
   customizerSidebar: false,
   isRTL: false,
   isDark: false,
   isMiniSidebar: false,
-  sidebarBg: "white",
+  sidebarBg: "secondary",
   isTopbarFixed: false,
   isMobileSidebar: false,
-  isSidebarFixed: false,
-  isLayoutHorizontal: true,
+  isSidebarFixed: true,
+  isLayoutHorizontal: false,
   isInnerRightPart: false, // this is for the three column layout right part show hide in table & mobile
 };
 

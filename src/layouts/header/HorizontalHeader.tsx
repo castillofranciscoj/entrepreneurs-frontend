@@ -68,29 +68,6 @@ const HorizontalHeader = () => {
             <i className={`bi ${isMobileSidebar ? "bi-x" : "bi-list"}`} />
           </Button>
 
-          {/******************************/}
-          {/**********Notification DD**********/}
-          {/******************************/}
-          <UncontrolledDropdown>
-            <DropdownToggle className=" hov-dd border-0" color={topbarColor}>
-              <Bell size={18} />
-            </DropdownToggle>
-            <DropdownMenu className="ddWidth" start>
-              <DropdownItem header>
-                <span className="mb-0 fs-5">Notifications</span>
-              </DropdownItem>
-              <DropdownItem divider />
-              <SimpleBar style={{ maxHeight: "350px" }}>
-                <NotificationDD />
-              </SimpleBar>
-              <DropdownItem divider />
-              <div className="p-2 px-3">
-                <Button color="primary" size="sm" block>
-                  Check All
-                </Button>
-              </div>
-            </DropdownMenu>
-          </UncontrolledDropdown>
           <UncontrolledDropdown className=" hov-dd">
             <DropdownToggle color="transparent" style={{ lineHeight: "0px" }}>
               <Image
@@ -106,7 +83,7 @@ const HorizontalHeader = () => {
 
               <div className="p-2 px-3">
                 <Button onClick={() => signOut()} color="danger" size="sm">
-                  Logout
+                  Sign Out
                 </Button>
               </div>
             </DropdownMenu>

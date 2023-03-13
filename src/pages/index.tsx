@@ -4,12 +4,22 @@ import client from '../graphql/client';
 import ProductTable from './projects/ProjectTable';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import React from "react";
-import { Row, Col } from "reactstrap";
 import Image from "next/image";
 import LogoDarkIcon from "../assets/images/logos/Entrepreneurs-dark-logo-icon.svg";
 import LogoDarkText from "../assets/images/logos/dark-logo-text.svg";
 import ProjectsCount from "./projects/ProjectsCount";
-import { Button } from "reactstrap";
+import {
+	Card,
+	CardImg,
+	CardText,
+	CardBody,
+	CardTitle,
+	CardSubtitle,
+	CardGroup,
+	Button,
+	Row,
+	Col,
+  } from "reactstrap";
 
 const Home = () => {
 	const {data: session, status} = useSession()
@@ -31,19 +41,12 @@ const Home = () => {
 	} else {
 		return(
 			<>
-		<div className="pe-4 py-3 ">
-		<Image src={LogoDarkIcon} alt="logo" />
-		<Image src={LogoDarkText} alt="logo" />
-        </div>
-		<div className="pe-4 py-3 ">
-</div>
-<div className="pe-4 py-3 ">
-</div>
-            <div align='center'>
-                <h1>Welcome, please <Button color="primary" onClick={() => signIn()}>sign in</Button> to continue. </h1>
-                
-            </div>
-            </>
+				<div className="pe-4 py-3"></div><div className="pe-4 py-3"></div>
+				<div className="myDiv">
+					<h3>Welcome, please <button onClick={() => signIn()}>sign in</button> to continue.</h3>
+				</div>
+				
+			</>
 		)
 	}
 	}

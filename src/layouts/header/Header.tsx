@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SimpleBar from "simplebar-react";
 import {
   Navbar,
   Nav,
@@ -12,9 +11,6 @@ import {
   DropdownItem,
   Button,
 } from "reactstrap";
-import MessageDD from "./MessageDD";
-import NotificationDD from "./NotificationDD";
-import MegaDD from "./MegaDD";
 import {
   ToggleMiniSidebar,
   ToggleMobileSidebar,
@@ -22,7 +18,6 @@ import {
 
 import LogoWhite from "../../assets/images/logos/white-logo-icon.svg";
 import ProfileDD from "./ProfileDD";
-import { MessageSquare, Bell, Grid, ArrowLeftCircle } from "react-feather";
 import Image from "next/image";
 import { useSession, signOut } from 'next-auth/react'
 
@@ -70,87 +65,12 @@ const Header = () => {
           </Link>
         </NavItem> */}
 
-        <UncontrolledDropdown inNavbar nav>
-          <DropdownToggle caret nav>
-            Create
-          </DropdownToggle>
-          <DropdownMenu end>
-            <DropdownItem>Option 1</DropdownItem>
-            <DropdownItem>Option 2</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>Reset</DropdownItem>
-          </DropdownMenu>
-        </UncontrolledDropdown>
       </Nav>
       {/******************************/}
       {/**********Left Nav Bar**********/}
       {/******************************/}
 
       <Nav className="ms-auto d-flex flex-row align-items-center" navbar>
-        <UncontrolledDropdown className="mx-1 hov-dd">
-          <DropdownToggle
-            color={topbarColor}
-            className="bg-transparent border-0"
-          >
-            <Bell size={18} />
-          </DropdownToggle>
-          <DropdownMenu className="ddWidth">
-            <DropdownItem header>
-              <span className="mb-0 font-weight-bold">Notifications</span>
-            </DropdownItem>
-            <DropdownItem divider />
-            <SimpleBar style={{ maxHeight: "350px" }}>
-              <NotificationDD />
-            </SimpleBar>
-            <DropdownItem divider />
-            <div className="p-2 px-3">
-              <Button color="primary" size="sm" block>
-                Check All
-              </Button>
-            </div>
-          </DropdownMenu>
-        </UncontrolledDropdown>
-        {/******************************/}
-        {/**********Message DD**********/}
-        {/******************************/}
-        <UncontrolledDropdown className="mx-1 hov-dd">
-          <DropdownToggle
-            color={topbarColor}
-            className="bg-transparent border-0"
-          >
-            <MessageSquare size={18} />
-          </DropdownToggle>
-          <DropdownMenu className="ddWidth">
-            <DropdownItem header>
-              <span className="mb-0 font-weight-bold">Messages</span>
-            </DropdownItem>
-            <DropdownItem divider />
-            <SimpleBar style={{ maxHeight: "350px" }}>
-              <MessageDD />
-            </SimpleBar>
-            <DropdownItem divider />
-            <div className="p-2 px-3">
-              <Button color="primary" size="sm" block>
-                Check All
-              </Button>
-            </div>
-          </DropdownMenu>
-        </UncontrolledDropdown>
-        {/******************************/}
-        {/**********Mega DD**********/}
-        {/******************************/}
-        <UncontrolledDropdown className="mega-dropdown mx-1 hov-dd">
-          <DropdownToggle
-            className="bg-transparent border-0"
-            color={topbarColor}
-          >
-            <Grid size={18} />
-          </DropdownToggle>
-          <DropdownMenu>
-            <MegaDD />
-          </DropdownMenu>
-        </UncontrolledDropdown>
-
         <UncontrolledDropdown className=" hov-dd">
           <DropdownToggle color="transparent" style={{ lineHeight: "0px" }}>
             <Image
@@ -165,7 +85,7 @@ const Header = () => {
             <ProfileDD />
             <div className="p-2 px-3">
               <Button onClick={() => signOut()} color="danger" size="sm">
-                Logout
+                Sign Out
               </Button>
             </div>
           </DropdownMenu>
@@ -175,10 +95,6 @@ const Header = () => {
       {/**********Notification DD**********/}
       {/******************************/}
     </Navbar>
-		)
-	} else {
-		return(
-			<div><p>You are not signed in.</p></div>
 		)
 	}
 };

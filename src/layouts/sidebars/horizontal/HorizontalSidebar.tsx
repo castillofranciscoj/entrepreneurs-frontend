@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import SidebarData from "../sidebardata/HorizontalSidebarData";
 import NavSubItem from "./NavSubItem";
 import NavSingleItem from "./NavSingleItem";
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 const HorizontalSidebar = () => {
   const {data: session, status} = useSession()
@@ -66,8 +66,9 @@ const HorizontalSidebar = () => {
         </Nav>
       </Container>
     </div>
-  );
+  )
   }
+
 };
 
 export default HorizontalSidebar;
