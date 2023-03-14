@@ -12,7 +12,16 @@ export default NextAuth({
 		LinkedInProvider({
 			clientId: process.env.LINKEDIN_CLIENT_ID,
 			clientSecret: process.env.LINKEDIN_CLIENT_SECRET
-		  })
+		  }),
 	],
 	secret : process.env.JWT_SECRET,
+	adapter: TypeORMLegacyAdapter({
+		type: 'postgres',  // or mysql, postgresql, mssql
+		host: process.env.DB_HOST,
+		port: 5432,
+		username: process.env.DB_USERNAME,
+		password: process.env.DB_PASSWORD,
+		database: process.env.DB_NAME,
+		synchronize: true
+	  }),
 })

@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <SessionProvider session={session}>
       <Provider store={store}>
         <Head>
-          <title>PBO Scorecard</title>
+          <title>Entrepreneurs.place</title>
           <meta
             name="description"
             content="Entrepreneurs.place"

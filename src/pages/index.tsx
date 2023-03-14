@@ -43,7 +43,7 @@ const Home = () => {
 			<>
 				<div className="pe-4 py-3"></div><div className="pe-4 py-3"></div>
 				<div className="myDiv">
-					<h3>Welcome, please <button onClick={() => signIn()}>sign in</button> to continue.</h3>
+					<h2>Welcome, please <button onClick={() => signIn()}>sign in</button> to continue.</h2>
 				</div>
 				
 			</>
