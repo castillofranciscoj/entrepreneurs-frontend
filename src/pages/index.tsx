@@ -1,22 +1,14 @@
 import { ApolloProvider } from '@apollo/client';
 import { useRouter } from 'next/router';
 import client from '../graphql/client';
-import ProductTable from './projects/ProjectTable';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import BreadCrumbs from "../layouts/breadcrumbs/BreadCrumbs";
+import Gold from "../components/dashboards/podium/Gold";
+import Silver from "../components/dashboards/podium/Silver";
+import Bronze from "../components/dashboards/podium/Bronze";
+import ProjectsTable from './Projects/ProjectsTable';
 import React from "react";
-import Image from "next/image";
-import LogoDarkIcon from "../assets/images/logos/Entrepreneurs-dark-logo-icon.svg";
-import LogoDarkText from "../assets/images/logos/dark-logo-text.svg";
-import ProjectsCount from "./projects/ProjectsCount";
 import {
-	Card,
-	CardImg,
-	CardText,
-	CardBody,
-	CardTitle,
-	CardSubtitle,
-	CardGroup,
-	Button,
 	Row,
 	Col,
   } from "reactstrap";
@@ -27,16 +19,24 @@ const Home = () => {
 	if (status === 'authenticated'){
 		return(
 			<>
-			<ApolloProvider client={client}>
-			<Row>
-        		<Col lg="8" sm="12">
-				<ProjectsCount />
-        		</Col>
-      		</Row>
-			<Row>
-				<ProductTable />
-			</Row>
-			</ApolloProvider></>
+			<BreadCrumbs />
+				<ApolloProvider client={client}>
+			  <Row>
+				{/********************* Podium ************************/}
+				<Col sm="12" lg="4">
+				  <Silver />
+				</Col>
+				<Col sm="12" lg="4">
+				  <Gold />
+				</Col>
+				<Col sm="12" lg="4">
+				 <Bronze />
+				</Col>
+			  </Row>
+			  {/********************* Detail ************************/}
+			  <ProjectsTable />
+			  </ApolloProvider>
+			</>
 		)
 	} else {
 		return(
