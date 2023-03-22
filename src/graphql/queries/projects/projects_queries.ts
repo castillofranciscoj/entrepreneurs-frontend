@@ -30,12 +30,6 @@ export const GET_PROJECTS = gql`
           id
           name
         }
-        offers{
-          name
-        }
-        requirements{
-          name
-        }
       }
     }
 `;
@@ -66,9 +60,25 @@ query prize($where: PrizeWhereUniqueInput!) {
 }
 `;
 
+export const GET_PROJECT_REQUIREMENTS = gql `
+query project($where: ProjectWhereUniqueInput!){
+  project(where: $where){
+    id
+    name
+    offersCount
+    requirements{
+      id
+      name
+      icon
+    }
+  }
+}
+`;
+
+
 export const GET_GOLD_PRICES = gql `
 query {
-  prize (where: {id: "c9e19033-551b-4428-9384-dc4966524d54"}) {
+  prize (where: {id: "f328c539-2906-479c-8524-e10a90370669"}) {
     id
     name
     projectCount
@@ -98,7 +108,7 @@ query {
 
 export const GET_SILVER_PRICES = gql `
 query {
-  prize (where: {id: "911616f7-bd0f-4c17-a7e6-e4c8e0e82ced"}) {
+  prize (where: {id: "70d2d678-d0b7-4181-bbfe-78357e307e69"}) {
     id
     name
     projectCount
@@ -127,7 +137,7 @@ query {
 
 export const GET_BRONZE_PRICES = gql `
 query {
-  prize (where: {id: "aed43bf1-6690-481c-8ae0-17c648a1f40a"}) {
+  prize (where: {id: "fe85797f-a602-4e0b-b52f-50d964934326"}) {
     id
     name
     projectCount
@@ -154,6 +164,27 @@ query {
 }
 `;
 
+export const CREATE_OFFER = gql `
+mutation createOffer($name:String, $offererEmail:String, $pid:ID, $rid:ID){
+  createOffer(data: { 
+    name: $name, 
+    offererEmail: $offererEmail,
+    project: {
+      connect:{
+        id:$pid
+      }
+    }
+      requirement: {
+      connect:{
+        id:$rid
+      }
+    }
+  }) {
+    id
+    name
+  }
+}
+`;
 
 
 

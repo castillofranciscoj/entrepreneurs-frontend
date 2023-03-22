@@ -1,36 +1,51 @@
 import React from "react";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-import { Card, Col, CardBody, CardText, CardTitle, CardSubtitle, Container, Row } from "reactstrap";
+import { Button, Card, Col, CardBody, CardText, CardTitle, CardSubtitle, Container, Row } from "reactstrap";
 import { useQuery } from '@apollo/client';
 import { GET_BRONZE_PRICES } from "../../../graphql/queries/projects/projects_queries";
 import { Project } from "../../../graphql/queries/projects/project.type";
 import { transformListIntoRowsOfElems } from "../../utils/arrays";
 
 function _Card(props: {pj : Project}) {
+  const router = useRouter();
   const { pj } = props;
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push({
+      pathname: "/Projects/Requirements/[details]",
+      query: { details: pj.id },
+    });
+  };
+  
   return (
     <Col key={pj.id as string}>
       <Card>
         <CardBody>
           <CardTitle className="h3">🥉 {pj.name}</CardTitle>
-          <CardSubtitle>📍 {pj.module.institution.country.name} </CardSubtitle>
-          <CardText className="h4">
+          <CardSubtitle>{pj.module.institution.name}</CardSubtitle>
+          <CardText className="h6">
+          📍 {pj.module.institution.country.name}
           </CardText>
-          <CardText className="h4">
-          {pj.module.institution.name} 
+          <CardText className="h5">
+          
           </CardText>
-          <CardText className="h4">
+          <CardText className="h5">
             Entrepreneur: {pj.entrepreneur.name}
           </CardText>
-          <CardText className="h4">
-            Project website: <a href={pj.website} target="_blank"> link</a>
+          <CardText className="h5">
+            Project website: <a href={pj.website} target="_blank"> {pj.website}</a>
           </CardText>
-          <CardText className="h4">
-            Project Requirements: {pj.requirementsCount}
+
+          <CardText className="h5">
+            Offers: {pj.offersCount} 
           </CardText>
-          <CardText className="h4">
-            Project Offers: {pj.offersCount} 
+          <CardText className="h5">
+            Requirements: 
+          </CardText>
+          <CardText className="h5">
+          <h4><Button onClick={handleClick} style={{ cursor: "pointer" }}>View {pj.requirementsCount} Requirements</Button></h4>
           </CardText>
         </CardBody>
       </Card>
@@ -38,7 +53,7 @@ function _Card(props: {pj : Project}) {
   );
 }
 
-export default function Bronze() {
+export default function BronzeProjects() {
   const { loading, data: data, error } = useQuery(GET_BRONZE_PRICES);
 
   if (loading) return <p>Loading...</p>;

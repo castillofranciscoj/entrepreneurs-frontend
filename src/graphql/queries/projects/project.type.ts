@@ -9,6 +9,8 @@ export type Offer = {
 export type Requirement = {
   id: string
   name: string
+  icon: string
+  projects?: Project[]
 }
 
 export type Module = {
