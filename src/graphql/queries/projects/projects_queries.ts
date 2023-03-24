@@ -78,27 +78,16 @@ query project($where: ProjectWhereUniqueInput!){
 
 export const GET_GOLD_PRICES = gql `
 query {
-  prize (where: {id: "a89f600e-33b6-4cad-b2b2-f7b17624cbb6"}) {
-    id
+  category(where: {id: "6baf2e36-d894-4932-bcce-d8448ce9ee9b"}){
     name
-    projectCount
-    project {
+    prizesCount
+    prizes{
       id
       name
-      website
-      requirementsCount
-      offersCount
-      entrepreneur{
+      project{
+        id
         name
-      }
-      module{
-        name
-        institution {
-          name
-          country{
-            name
-          }
-        }
+        website
       }
     }
   }
@@ -108,27 +97,16 @@ query {
 
 export const GET_SILVER_PRICES = gql `
 query {
-  prize (where: {id: "c50c847d-9b56-4337-a04a-5223c34c2391"}) {
-    id
+  category(where: {id: "78c589e4-6007-4d83-aa6c-3b8b0609ce1c"}){
     name
-    projectCount
-    project {
+    prizesCount
+    prizes{
       id
       name
-      website
-      requirementsCount
-      offersCount
-      entrepreneur{
+      project{
+        id
         name
-      }
-      module{
-        name
-        institution {
-          name
-          country{
-            name
-          }
-        }
+        website
       }
     }
   }
@@ -137,27 +115,16 @@ query {
 
 export const GET_BRONZE_PRICES = gql `
 query {
-  prize (where: {id: "5d10ca1e-e1c4-44c1-b2fd-64f4f6562dca"}) {
-    id
+  category(where: {id: "f8fc187d-abfb-4906-b423-aec510e14d2d"}){
     name
-    projectCount
-    project {
+    prizesCount
+    prizes{
       id
       name
-      website
-      requirementsCount
-      offersCount
-      entrepreneur{
+      project{
+        id
         name
-      }
-      module{
-        name
-        institution {
-          name
-          country{
-            name
-          }
-        }
+        website
       }
     }
   }

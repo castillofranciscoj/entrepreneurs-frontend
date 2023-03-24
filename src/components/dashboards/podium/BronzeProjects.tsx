@@ -59,7 +59,7 @@ export default function BronzeProjects() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
   const colPerRow = 3;
-  const rows = transformListIntoRowsOfElems(data.prize.project as Project[], colPerRow);
+  const rows = transformListIntoRowsOfElems(data.category.prizes.project as Project[], colPerRow);
 
   if (rows.length == 0) {
     return
