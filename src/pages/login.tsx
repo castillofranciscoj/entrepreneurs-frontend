@@ -9,7 +9,6 @@ const login = () => {
         return(
             <div>
                 <p>Welcome, {session.user.name}</p>
-                <p><img src={session.user.image} style={{borderRadius:'50px'}}alt='' /></p>
                 <p><button onClick={() => signOut()}>Sign out</button></p>
             </div>
         )
