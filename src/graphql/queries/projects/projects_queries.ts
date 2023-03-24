@@ -78,7 +78,7 @@ query project($where: ProjectWhereUniqueInput!){
 
 export const GET_GOLD_PRICES = gql `
 query {
-  prize (where: {id: "f328c539-2906-479c-8524-e10a90370669"}) {
+  prize (where: {id: "a89f600e-33b6-4cad-b2b2-f7b17624cbb6"}) {
     id
     name
     projectCount
@@ -108,7 +108,7 @@ query {
 
 export const GET_SILVER_PRICES = gql `
 query {
-  prize (where: {id: "70d2d678-d0b7-4181-bbfe-78357e307e69"}) {
+  prize (where: {id: "c50c847d-9b56-4337-a04a-5223c34c2391"}) {
     id
     name
     projectCount
@@ -137,7 +137,7 @@ query {
 
 export const GET_BRONZE_PRICES = gql `
 query {
-  prize (where: {id: "fe85797f-a602-4e0b-b52f-50d964934326"}) {
+  prize (where: {id: "5d10ca1e-e1c4-44c1-b2fd-64f4f6562dca"}) {
     id
     name
     projectCount

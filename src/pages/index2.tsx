@@ -19,7 +19,23 @@ const Home = () => {
 	if (status === 'authenticated'){
 		return(
 			<>
-				<h2>Welcome!</h2>
+			<BreadCrumbs />
+				<ApolloProvider client={client}>
+			  <Row>
+				{/********************* Podium ************************/}
+				<Col sm="12" lg="4">
+				  <Silver />
+				</Col>
+				<Col sm="12" lg="4">
+				  <Gold />
+				</Col>
+				<Col sm="12" lg="4">
+				 <Bronze />
+				</Col>
+			  </Row>
+			  {/********************* Detail ************************/}
+			  <ProjectsTable />
+			  </ApolloProvider>
 			</>
 		)
 	} else {
@@ -29,6 +45,7 @@ const Home = () => {
 				<div className="myDiv">
 					<h2>Welcome, please <button onClick={() => signIn()}>sign in</button> to continue.</h2>
 				</div>
+				
 			</>
 		)
 	}
