@@ -24,13 +24,13 @@ const Home = () => {
 			  <Row>
 				{/********************* Podium ************************/}
 				<Col sm="12" lg="4">
-				  <Silver />
+				  	<Gold />
 				</Col>
 				<Col sm="12" lg="4">
-				  <Gold />
+					<Silver />
 				</Col>
 				<Col sm="12" lg="4">
-				 <Bronze />
+				 	<Bronze />
 				</Col>
 			  </Row>
 			  {/********************* Detail ************************/}

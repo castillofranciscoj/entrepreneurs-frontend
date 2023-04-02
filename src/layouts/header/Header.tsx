@@ -72,8 +72,8 @@ const Header = () => {
 
       <Nav className="ms-auto d-flex flex-row align-items-center" navbar>
         <UncontrolledDropdown className=" hov-dd">
-          <DropdownToggle color="transparent" style={{ lineHeight: "0px" }}>
-
+          <DropdownToggle color="secondary" style={{ lineHeight: "10px" }}>
+          {session.user.name}
           </DropdownToggle>
           <DropdownMenu className="ddWidth">
             <ProfileDD />

@@ -5,7 +5,6 @@ import FullLayout from "../layouts/FullLayout";
 import BlankLayout from "../layouts/BlankLayout";
 import Head from "next/head";
 import "../styles/style.scss";
-import "../../data";
 
 const layouts = {
   Blank: BlankLayout,

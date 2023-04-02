@@ -13,6 +13,9 @@ export const GET_PROJECTS = gql`
         prizes{
           id
           name
+          category{
+            name
+          }
         }
         module{
           name
@@ -23,6 +26,7 @@ export const GET_PROJECTS = gql`
             name
             country{
               name
+              flag
             }
           }
         }
@@ -71,33 +75,18 @@ query project($where: ProjectWhereUniqueInput!){
       name
       icon
     }
-  }
-}
-`;
-
-
-export const GET_GOLD_PRICES = gql `
-query {
-  category(where: {id: "6baf2e36-d894-4932-bcce-d8448ce9ee9b"}){
-    name
-    prizesCount
-    prizes{
-      id
+    entrepreneur{
       name
-      project{
-        id
-        name
-        website
-      }
+      email
     }
   }
 }
 `;
 
 
-export const GET_SILVER_PRICES = gql `
-query {
-  category(where: {id: "78c589e4-6007-4d83-aa6c-3b8b0609ce1c"}){
+export const GET_PRICES_BY_NAME = gql `
+query categories($name:String){
+  categories(where:{name:{equals:$name}}){
     name
     prizesCount
     prizes{
@@ -107,15 +96,33 @@ query {
         id
         name
         website
+        offersCount
+        requirementsCount
+        entrepreneur{
+          name
+        }
+        module{
+          name
+          programme{
+            name
+          }
+          institution{
+            name
+            country{
+              name
+              flag
+            }
+          }
+        }
       }
     }
   }
 }
 `;
 
-export const GET_BRONZE_PRICES = gql `
-query {
-  category(where: {id: "f8fc187d-abfb-4906-b423-aec510e14d2d"}){
+export const GET_PRICES_BY_ID = gql `
+query Category($where: CategoryWhereUniqueInput!) {
+  category(where: $where) {
     name
     prizesCount
     prizes{
@@ -125,6 +132,24 @@ query {
         id
         name
         website
+        offersCount
+        requirementsCount
+        entrepreneur{
+          name
+        }
+        module{
+          name
+          programme{
+            name
+          }
+          institution{
+            name
+            country{
+              name
+              flag
+            }
+          }
+        }
       }
     }
   }
@@ -132,10 +157,11 @@ query {
 `;
 
 export const CREATE_OFFER = gql `
-mutation createOffer($name:String, $offererEmail:String, $pid:ID, $rid:ID){
+mutation createOffer($name:String, $offererEmail:String, $entrepreneurEmail:String, $pid:ID, $rid:ID){
   createOffer(data: { 
     name: $name, 
     offererEmail: $offererEmail,
+    entrepreneurEmail: $entrepreneurEmail,
     project: {
       connect:{
         id:$pid

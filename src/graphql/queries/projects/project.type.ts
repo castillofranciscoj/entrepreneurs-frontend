@@ -1,5 +1,6 @@
 export type Entrepreneur = {
   name: string
+  email: string
 }
 
 export type Offer = {
@@ -26,6 +27,7 @@ export type Programme = {
 export type Institution = {
   name: string
   country: Country
+  flag: string
 }
 
 export type Country = {
@@ -49,6 +51,11 @@ export type Project = {
 export type Prize = {
   id: string;
   name: string;
-  projectCount: number;
-  projects?: Project[]
+  project: Project;
+};
+
+export type Category = {
+  id: string;
+  name: string;
+  prize: Prize;
 };
