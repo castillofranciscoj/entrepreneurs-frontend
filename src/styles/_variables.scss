@@ -7,21 +7,50 @@ $font-family-sans-serif: "Nunito", sans-serif;
 // Theme Colors
 /********************/
 $primary: #2962ff;
-$info: #3699ff;
+$info: #33A7B5;
 $danger: #f64e60;
 $success: #0bb7af;
 $warning: #ee9d01;
-$dark: #001e3c;
+$dark: #ea702f;
 $light: #f6faff;
 $secondary: #001e3c;
 
 .myDiv {
+  display: flex;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-  background-color: white;
+  background-color: linear-gradient(90deg, rgba(#FFF5CB, 100%), rgba(#B6E3D4, 100%), rgba(#33A7B5, 100%));
   height: fit-content;
+  margin: auto;
   width: fit-content;
   text-align: center;
   padding: 100px;
+  }
+
+  .dividerDiv {
+    height: fit-content;
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+    padding: 50px;
+    }
+
+  .form-input {
+    &__label {
+      font-size: 14px;
+  }
+  &__input {
+      box-sizing: border-box;
+      height: 150px;
+      width: 500px;
+      border: 2px solid #E6E6E6;
+      border-radius: 10px;
+      word-wrap: break-word;
+  word-break: break-word;
+  }
+  }
+  
+  .form-button {
+  
   }
 
 $theme-colors: (
@@ -42,6 +71,7 @@ $theme-colors: (
 );
 // scss-docs-start gray-color-variables
 $white: #fff !default;
+$gradient: linear-gradient(90deg, rgba(#FFF5CB, 100%), rgba(#B6E3D4, 100%), rgba(#33A7B5, 100%)) !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #eef5f9 !default;
 $gray-300: #dee2e6 !default;

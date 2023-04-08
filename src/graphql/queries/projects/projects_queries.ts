@@ -2,37 +2,39 @@ import { gql } from '@apollo/client'
 
 
 export const GET_PROJECTS = gql`
-    query projects{
-      projects{
-        id
-        offersCount
-        requirementsCount
-        name
-        website
-        createdAt
-        prizes{
+    query Status($where: StatusWhereUniqueInput!){
+      status(where: $where){
+        projects{
           id
+          offersCount
+          requirementsCount
           name
-          category{
+          website
+          createdAt
+          prizes{
+            id
             name
-          }
-        }
-        module{
-          name
-          programme{
-            name
-          }
-          institution{
-            name
-            country{
+            category{
               name
-              flag
             }
           }
-        }
-        entrepreneur{
-          id
-          name
+          module{
+            name
+            programme{
+              name
+            }
+            institution{
+              name
+              country{
+                name
+                flag
+              }
+            }
+          }
+          entrepreneur{
+            id
+            name
+          }
         }
       }
     }
@@ -157,10 +159,11 @@ query Category($where: CategoryWhereUniqueInput!) {
 `;
 
 export const CREATE_OFFER = gql `
-mutation createOffer($name:String, $offererEmail:String, $entrepreneurEmail:String, $pid:ID, $rid:ID){
+mutation createOffer($name:String, $offererEmail:String, $offererName:String, $entrepreneurEmail:String, $pid:ID, $rid:ID){
   createOffer(data: { 
     name: $name, 
     offererEmail: $offererEmail,
+    offererName: $offererName,
     entrepreneurEmail: $entrepreneurEmail,
     project: {
       connect:{

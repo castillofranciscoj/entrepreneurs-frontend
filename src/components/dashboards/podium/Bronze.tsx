@@ -36,7 +36,7 @@ const handleClick = (e) => {
     <Card onClick={handleClick} style={{ cursor: "pointer" }}>
       <CardBody className="p-4">
         <CardTitle tag="h3">🥉 Bronze Winners</CardTitle>
-        <h3 className="fw-bold mt-3 mb-2"><Badge color="success">{data.category.prizesCount}</Badge> Projects</h3>
+        <h3 className="fw-bold mt-3 mb-2"><Badge color="info">{data.category.prizesCount}</Badge> Projects</h3>
         <CardSubtitle className="text-muted mb-1 fs-6">
         </CardSubtitle>
       </CardBody>

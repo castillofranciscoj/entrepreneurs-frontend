@@ -11,7 +11,11 @@ import React from "react";
 import {
 	Row,
 	Col,
+	Container
   } from "reactstrap";
+import Image from "next/image";
+import LogoWhiteIcon from "../assets/images/logos/Entrepreneurs-white-logo-icon.svg";
+import LogoWhiteText from "../assets/images/logos/white-logo-text.svg";
 
 const Home = () => {
 	const {data: session, status} = useSession()
@@ -19,7 +23,6 @@ const Home = () => {
 	if (status === 'authenticated'){
 		return(
 			<>
-			<BreadCrumbs />
 				<ApolloProvider client={client}>
 			  <Row>
 				{/********************* Podium ************************/}
@@ -41,11 +44,17 @@ const Home = () => {
 	} else {
 		return(
 			<>
-				<div className="pe-4 py-3"></div><div className="pe-4 py-3"></div>
+				<div className="dividerDiv">
+				<Image  width={30} height={30} src={LogoWhiteIcon} alt="logo" />
+            	<Image src={LogoWhiteText} alt="logo" />
+				</div>
 				<div className="myDiv">
 					<h2>Welcome, please <button onClick={() => signIn()}>sign in</button> to continue.</h2>
 				</div>
-				
+				<div className="dividerDiv">
+				<h4>When you sign in to the Entrepreneurs Hub for the first time, an account will automatically be created for you.</h4>
+				</div>
+
 			</>
 		)
 	}

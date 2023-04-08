@@ -16,7 +16,6 @@ const Gold = () => {
 	if (status === 'authenticated'){
 		return(
 			<>
-			<BreadCrumbs />
 				<ApolloProvider client={client}>
 				  <GoldProjects />
 			  </ApolloProvider>

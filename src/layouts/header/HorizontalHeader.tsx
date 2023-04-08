@@ -59,30 +59,21 @@ const HorizontalHeader = () => {
         </NavItem> */}
 
         </Nav>
-        <Nav className="ms-auto flex-row align-items-center" navbar>
-          <Button
-            color={topbarColor}
-            className="d-sm-block d-lg-none"
-            onClick={() => dispatch(ToggleMobileSidebar())}
-          >
-            <i className={`bi ${isMobileSidebar ? "bi-x" : "bi-list"}`} />
-          </Button>
-
-          <UncontrolledDropdown className=" hov-dd">
-            <DropdownToggle color="transparent" style={{ lineHeight: "0px" }}>
-              
-            </DropdownToggle>
-            <DropdownMenu className="ddWidth" end>
-              <ProfileDD />
-
-              <div className="p-2 px-3">
-                <Button onClick={() => signOut()} color="danger" size="sm">
-                  Sign Out
-                </Button>
-              </div>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-        </Nav>
+        <Nav className="ms-auto d-flex flex-row align-items-center" navbar>
+        <UncontrolledDropdown className=" hov-dd">
+          <DropdownToggle color="white" style={{ lineHeight: "10px" }}>
+          {session.user.name}
+          </DropdownToggle>
+          <DropdownMenu className="ddWidth">
+            <ProfileDD />
+            <div className="p-2 px-3">
+              <Button onClick={() => signOut()} color="danger" size="sm">
+                Sign Out
+              </Button>
+            </div>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+      </Nav>
       </Container>
     </Navbar>
 		)

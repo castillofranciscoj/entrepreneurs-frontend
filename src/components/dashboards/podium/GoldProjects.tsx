@@ -32,20 +32,27 @@ function _Card(props: {pj : Prize}) {
           
           </CardText>
           <CardText className="h5">
-            Entrepreneur: {pj.project.entrepreneur.name}
+            <h4>By {pj.project.entrepreneur.name}</h4>
           </CardText>
           <CardText className="h5">
-            Project website: <a href={pj.project.website} target="_blank"> {pj.project.website}</a>
-          </CardText>
-
-          <CardText className="h5">
-            Offers: {pj.project.offersCount} 
+          <Button color="light" href={pj.project.website} target="_blank">🔗 Website</Button>
           </CardText>
           <CardText className="h5">
-            Requirements: 
+            {pj.project.offersCount == "1" ? (
+                <Button disabled color="light">📫 {pj.project.offersCount} Offer</Button>)
+              : pj.project.offersCount == "0" ? (
+                <Button disabled color="light">📭 No Offers Yet</Button>)
+              : (
+                <Button disabled color="light">📫 {pj.project.offersCount} Offers</Button>
+              )
+            }
           </CardText>
           <CardText className="h5">
-          <h4><Button onClick={handleClick} style={{ cursor: "pointer" }}>View {pj.project.requirementsCount} Requirements</Button></h4>
+            {pj.project.requirementsCount == "1" ? (
+                <h4><Button color="success" onClick={handleClick} style={{ cursor: "pointer" }}>👉 View {pj.project.requirementsCount} Requirement</Button></h4>)
+                : (
+                  <h4><Button color="success" onClick={handleClick} style={{ cursor: "pointer" }}>👉 View {pj.project.requirementsCount} Requirements</Button></h4>)
+            }
           </CardText>
         </CardBody>
       </Card>

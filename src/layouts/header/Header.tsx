@@ -75,15 +75,10 @@ const Header = () => {
           <DropdownToggle color="secondary" style={{ lineHeight: "10px" }}>
           {session.user.name}
           </DropdownToggle>
-          <DropdownMenu className="ddWidth">
-            <ProfileDD />
-            <div className="p-2 px-3">
-              <Button onClick={() => signOut()} color="danger" size="sm">
+        </UncontrolledDropdown>
+        <Button onClick={() => signOut()} color="danger" size="sm">
                 Sign Out
               </Button>
-            </div>
-          </DropdownMenu>
-        </UncontrolledDropdown>
       </Nav>
       {/******************************/}
       {/**********Notification DD**********/}

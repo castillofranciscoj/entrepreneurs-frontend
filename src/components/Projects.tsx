@@ -31,20 +31,28 @@ function _Card(props: {pj : Project}) {
           
           </CardText>
           <CardText className="h5">
-            Entrepreneur: {pj.entrepreneur.name}
+            <h4>By {pj.entrepreneur.name}</h4>
           </CardText>
           <CardText className="h5">
-            Project website: <a href={pj.website} target="_blank"> {pj.website}</a>
+            <Button color="light" href={pj.website} target="_blank">🔗 Website</Button>
           </CardText>
 
-          <CardText className="h5">
-            Offers: {pj.offersCount} 
+          <CardText className="h5"> 
+            {pj.offersCount == "1" ? (
+                  <Button disabled color="light">📫 {pj.offersCount} Offer</Button>)
+                : pj.offersCount == "0" ? (
+                  <Button disabled color="light">📭 No Offers Yet</Button>)
+                : (
+                  <Button disabled color="light">📫 {pj.offersCount} Offers</Button>
+                )
+            }
           </CardText>
           <CardText className="h5">
-            Requirements: 
-          </CardText>
-          <CardText className="h5">
-          <h4><Button onClick={handleClick} style={{ cursor: "pointer" }}>View {pj.requirementsCount} Requirements</Button></h4>
+            {pj.requirementsCount == "1" ? (
+              <h4><Button color="success" onClick={handleClick} style={{ cursor: "pointer" }}>👉 View {pj.requirementsCount} Requirement</Button></h4>)
+              : (
+                <h4><Button color="success" onClick={handleClick} style={{ cursor: "pointer" }}>👉 View {pj.requirementsCount} Requirements</Button></h4>)
+            }
           </CardText>
         </CardBody>
       </Card>
@@ -52,14 +60,22 @@ function _Card(props: {pj : Project}) {
   );
 }
 
-export default function GoldProjects() {
-  const { loading, data: data, error } = useQuery(GET_PROJECTS)
+export default function Projects() {
+  const id = "clfu74vx000043vkbsst24ry9";
+  id.toString;
+  const { loading, data: data, error } = useQuery(GET_PROJECTS, {
+    variables: {
+      where: {
+          "id": id
+      }
+    }
+  });
   
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
   const projects: Project[] = data.projects;
   const colPerRow = 3;
-  const rows = transformListIntoRowsOfElems(data.projects as Project[], colPerRow);
+  const rows = transformListIntoRowsOfElems(data.status.projects as Project[], colPerRow);
 
   if (rows.length == 0) {
     return

@@ -23,7 +23,7 @@ const HorizontalSidebar = () => {
       } ${isMobileSidebar ? "showSidebar" : ""}`}
     >
       <Container>
-        <Nav className={activeBg === "white" ? "" : "lightText"}>
+        <Nav className={activeBg === "white" ? "" : "darkText"}>
           {SidebarData.map((navi) => {
             if (navi.caption) {
               return (

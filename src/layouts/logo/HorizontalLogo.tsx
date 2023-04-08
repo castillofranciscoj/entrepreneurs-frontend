@@ -14,7 +14,7 @@ const Logo = () => {
     <Link href="/" className="d-flex align-items-center gap-2">
         {isDarkMode || activetopbarBg !== "white" ? (
           <>
-            <Image src={LogoWhiteIcon} alt="logo" />
+            <Image  width={30} height={30} src={LogoWhiteIcon} alt="logo" />
             <Image src={LogoWhiteText} alt="logo" />
           </>
         ) : (

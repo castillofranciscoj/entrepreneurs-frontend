@@ -6,13 +6,22 @@ import { Badge } from "reactstrap";
 import { useQuery, gql } from '@apollo/client';
 import { GET_PROJECTS } from "../../graphql/queries/projects/projects_queries";
 import { Project } from "../../graphql/queries/projects/project.type";
+import { Button } from "reactstrap";
 
 export default function ProjectsTable() {
-  const { loading, data: data, error } = useQuery(GET_PROJECTS)
-  
+  const id = "clfu74vx000043vkbsst24ry9";
+  id.toString;
+  const { loading, data: data, error } = useQuery(GET_PROJECTS, {
+    variables: {
+      where: {
+          "id": id
+      }
+    }
+  });
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
-  const projects: Project[] = data.projects;
+  const projects: Project[] = data.status.projects;
 
   return (
     <div>
@@ -29,53 +38,80 @@ export default function ProjectsTable() {
             {
               Header: "Project",
               accessor: "name",
+              Cell: row => <div style={{ fontWeight:"bold" }}>{row.value}</div>,
               minWidth: 120,
             },
             {
-              Header: "Web",
-              accessor: "website",
-              Cell: props => <a href={props.value} target="_blank">Link</a>,
-              minWidth: 50,
+              Header: "Entrepreneur",
+              Cell: row => <div style={{ fontWeight:"bold" }}>{row.value}</div>,
+              accessor: "entrepreneur.name",
+              minWidth: 120,
             },
             {
               Header: "Requirements",
               accessor: "requirementsCount",
-              minWidth: 100,
+              miWidth: 0,
+              show: false
+            },
+            {
+              Header: "createdAt",
+              accessor: "createdAt",
+              desc: true,
+              show: false
+            },
+            {
+              Header: "Institution",
+              accessor: "module.institution.name",
+              show: false
+            },
+            {
+              Header: "Country",
+              accessor: "module.institution.country.flag",
+              Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>,
+              miWidth: 70,
+              maxWidth: 70,
+            },
+            {
+              Header: "Website",
+              accessor: "website",
+              Cell: props => 
+              <div style={{ textAlign: "center" }}>
+                <Button color="light" href={props.value} target="_blank">Open Website</Button>
+              </div>,
+              minWidth: 80,
             },
             {
               Header: "Offers",
               accessor: "offersCount",
-              minWidth: 50,
+              desc: true,
+              Cell: row => <div style={{ textAlign: "center" }}>
+                {row.value == 1 ? (
+                  <Button disabled color="light">📫 {row.value} Offer</Button>)
+                : row.value == 0 ? (
+                  <Button disabled color="light">📭 No Offers Yet</Button>)
+                : (
+                  <Button disabled color="light">📫 {row.value} Offers</Button>
+                )
+              }
+                </div>,
+              minWidth: 100,
             },
             {
-              Header: "Make Offer",
+              Header: "Requirements",
               accessor: "id",
-              Cell: props => <a href={"/Projects/Requirements/" + props.value} target="_blank">Link</a>,
-              minWidth: 80,
-            },
-            {
-              Header: "Entrepreneur",
-              accessor: "entrepreneur.name"
-            },
-            {
-              Header: "Institution",
-              accessor: "module.institution.name"
-            },
-            {
-              Header: "Country",
-              accessor: "module.institution.country.name",
-              minWidth: 60,
-            },
-            {
-              Header: "",
-              accessor: "module.institution.country.flag",
-              maxWidth: 80,
-              minWidth: 50,
-              width: 45,
+              Cell: props => 
+                  <div style={{ textAlign: "center" }}>
+                    {props.row.requirementsCount == 1 ? (
+                      <Button color="success" href={"/Projects/Requirements/" + props.value}>👉 View {props.row.requirementsCount} Requirement</Button>)
+                      : (
+                      <Button color="success" href={"/Projects/Requirements/" + props.value}>👉 View {props.row.requirementsCount} Requirements</Button>)
+                    }
+                  </div>,
+              minWidth: 150,
             },
           ]}
           defaultPageSize={30}
-          className="-striped -highlight"
+          className="-highlight"
         />
       </ComponentCard>
     </div>

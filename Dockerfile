@@ -1,6 +1,6 @@
-FROM --platform=linux/amd64 node:16
+FROM --platform=linux/amd64 node:18
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json tsconfig.json ./
 COPY src ./
 RUN yarn
 RUN yarn cache clean
